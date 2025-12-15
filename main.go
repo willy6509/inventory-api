@@ -24,6 +24,13 @@ func main() {
 
 	// 3. Init Fiber
 	app := fiber.New()
+	app.Get("/", func(c *fiber.Ctx) error {
+		return c.JSON(fiber.Map{
+			"message": "Inventory API running",
+			"status":  "success",
+		})
+	})
+
 	app.Use(logger.New())
 	app.Use(cors.New())
 
